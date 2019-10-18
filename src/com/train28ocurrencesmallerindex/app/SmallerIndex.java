@@ -22,11 +22,11 @@ public class SmallerIndex {
 		final int ELEMENTS_ARRAY = 10;
 		
 		// Variables declaration
-		int indexFound = ELEMENTS_ARRAY;
+		int len = ELEMENTS_ARRAY;
 		int numberFound = -1;
+		boolean isFound = false;
 		// Array declaration
-		int[] myArray = new int[ELEMENTS_ARRAY];
-		
+		 int[] myArray = new int[ELEMENTS_ARRAY];
 		// Object construction
 		Random randomNumber = new Random(System.nanoTime());
 				
@@ -35,21 +35,19 @@ public class SmallerIndex {
 			myArray[i] = randomNumber.nextInt(10);
 			System.out.print(myArray[i]+ " ");
 		}
-		
+
 		// Process
-		for(int i = 0; i < ELEMENTS_ARRAY; i++) {
-			for(int j = i + 1; j < ELEMENTS_ARRAY-1; j++) {
+		for(int i = 0; i < myArray.length; i++) {
+			for(int j = i + 1; j < len; j++) {
 				if(myArray[i] == myArray[j]) {
-					if(indexFound > j) {
-						indexFound = j;
-						numberFound = myArray[i];
-					}
+					isFound = true;
+					len = j;
+					numberFound = myArray[i];
 				}
 			}
 		}
-		
 		// Output
-		if(indexFound == ELEMENTS_ARRAY) {
+		if(!isFound) {
 			System.out.format("\n-1");
 		}
 		else {
